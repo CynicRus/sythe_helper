@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.859,D:\Coding\YohoJo\sythe_utils.pas=D:\Coding\YohoJo\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.755,E:\Coding\YohoJo\sythe_types.pas=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.019,E:\Coding\YohoJo\Unit1.pas=E:\Coding\YohoJo\sythe_types.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.885,C:\Users\Cynic\Documents\RAD Studio\Projects\Project1.dproj=E:\Coding\YohoJo\Yohojo_sythe.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.880,=E:\Coding\YohoJo\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.121,=D:\Coding\YohoJo\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.899,=C:\Users\Cynic\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.265,C:\Users\Cynic\Documents\RAD Studio\Projects\Unit1.dfm=E:\Coding\YohoJo\main.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.265,C:\Users\Cynic\Documents\RAD Studio\Projects\Unit1.pas=E:\Coding\YohoJo\main.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.612,=D:\Coding\YohoJo\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.606,D:\Coding\YohoJo\Unit1.pas=D:\Coding\YohoJo\ThreadParser.pas</Transaction>
+  </Transactions>
+</BorlandProject>
