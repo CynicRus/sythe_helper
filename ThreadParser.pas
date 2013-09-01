@@ -109,7 +109,7 @@ end;
   PostUrlQueue: TUrlQueue;
   PagesQueue: TPostURLQueue;
   GeneralCS: TRTLCriticalSection;
-  ThreadCS: TRTLCriticalSection;
+  //ThreadCS: TRTLCriticalSection;
   //FinalList: TList<Tpost>;
   SearchingWords: TList<AnsiString>;
   PagesSemaphore: THandle;
@@ -134,6 +134,7 @@ var
      SubItems.Add(Apost.User.Rank);
      SubItems.Add(Apost.Date);
      SubItems.Add(Apost.Text);
+     Subitems.Add(Apost.PostNo);
     end;
     Form1.PostView.Items.EndUpdate;
    LeaveCriticalSection(GeneralCS);
@@ -357,6 +358,7 @@ begin
  Post.User.PostCount:=GetSytheUserPostCount(userInfo);
  Post.Date:=GetPostDate(info);
  Post.Id:=GetPostId(info);
+ Post.PostNo:=getPostNo(info);
  if Assigned(FWriteLn) then
   FWriteLn('Got message from user: '+#32+Post.User.Nickname+';'+#32+Post.User.Rank+';'+#32+Post.User.JoinDate+#32+';'+#32+Post.User.PostCount+';');
  Post.Text:=ProcessPostText(info);

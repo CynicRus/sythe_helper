@@ -143,6 +143,9 @@ object Form1: TForm1
         end
         item
           Caption = 'Message'
+        end
+        item
+          Caption = 'PostNo'
         end>
       ReadOnly = True
       TabOrder = 0

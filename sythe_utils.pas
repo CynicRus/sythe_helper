@@ -3,7 +3,7 @@ unit sythe_utils;
 interface
 
  uses
-  Classes,Sysutils,StrUtils, Windows,HttpSend,RegularExpressions,Generics.Collections;
+  Classes,Sysutils,StrUtils, Windows,HttpSend,RegularExpressions,DateUtils,Generics.Collections;
  type
 
  TStatusProc = procedure (CurrentStatus: ansistring);
@@ -25,6 +25,7 @@ interface
       Text: AnsiString;
       Id: AnsiString;
       Date: AnsiString;
+      PostNo: AnsiString;
       MustBeAdded: boolean;
     end;
  function Explode(const Separator, S: string; Limit: Integer = 0): TStringArray;
@@ -60,6 +61,8 @@ interface
   function PostDateToDateTime(Str: AnsiString):TDateTime;
 
  function GetPostId(Info: AnsiString):AnsiString;
+
+ function getPostNo(Info: ansistring):ansistring;
 
  function ConvertHTML(AInput: AnsiString): AnsiString;
 
@@ -510,6 +513,22 @@ begin
  LeaveCriticalSection(GeneralCS);
 end;
 
+function getPostNo(Info: ansistring):ansistring;
+var
+ Reg: TRegEx;
+ i:integer;
+ M: TMatchCollection;
+begin
+  //info:=GetPage(Url);
+  Reg := TRegEx.Create('post_message_\d+',[roIgnoreCase, roMultiLine]);
+  if Reg.IsMatch(info) then
+  begin
+    M:=Reg.Matches(info);
+   // for i := 0 to M.Count-1 do
+       result:=PArs(M[0].Value,'post_','ge_');
+  end;
+end;
+
 function GetPostId(Info: AnsiString):AnsiString;
 var
  Reg: TRegEx;
@@ -532,7 +551,7 @@ end;
 
 function PostDateToDateTime(Str: AnsiString):TDateTime;
 Var
-StrDate : AnsiString;
+StrDate,str1 : AnsiString;
 Fmt     : TFormatSettings;
 dt      : TDateTime;
 Flag: TReplaceFlags;
@@ -542,7 +561,18 @@ fmt.ShortDateFormat:='mm-dd-yyyy';
 fmt.DateSeparator  :='-';
 fmt.LongTimeFormat :='hh:mm AM/PM';
 fmt.TimeSeparator  :=':';
-StrDate:=StringReplace(str,',','',flag);
+str1:=str;
+if (Pos('yesterday',lowercase(str)) > 0) then
+begin
+ str1:=stringreplace(str,'yesterday',FormatDateTime('mm-dd-yyyy',Yesterday),Flag);
+ //str1:=stringreplace(str1,'.','-',Flag);
+end;
+if (Pos('today',lowercase(str)) > 0) then
+begin
+ str1:=stringreplace(Str,'today',FormatDateTime('mm-dd-yyyy',now),flag);
+ //str1:=stringreplace(str1,'.','-',Flag);
+end;
+StrDate:=StringReplace(str1,',','',flag);
 dt:=StrToDateTime(StrDate,Fmt);
 result:= dt;
 end;

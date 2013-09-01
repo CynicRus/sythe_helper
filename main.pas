@@ -181,11 +181,12 @@ CodeText.Lines.Clear;
    if PostView.Items[i].Checked then
     begin
     CodeText.Lines.Add(IntToStr(Numberi)+')'+#13#10);
-    CodeText.Lines.Add('[QUOTE]');
-    CodeText.Lines.Add('From:'+#32+PostView.Items[i].Subitems[0]);
-    Codetext.Lines.Add('Rank:'+#32+PostView.Items[i].SubItems[3]);
-    CodeText.Lines.Add('Message: '+#32+PostView.Items[i].SubItems[5]);GetNextNumber;
-    CodeText.Lines.Add('When:'+#32+PostView.Items[i].SubItems[4]);
+    CodeText.Lines.Add('[QUOTE='+PostView.Items[i].Subitems[0]+';'+PostView.Items[i].SubItems[6]+']'+#13#10);
+
+   // CodeText.Lines.Add('From:'+#32+PostView.Items[i].Subitems[0]);
+   // Codetext.Lines.Add('Rank:'+#32+PostView.Items[i].SubItems[3]);
+    CodeText.Lines.Add(#32+PostView.Items[i].SubItems[5]);GetNextNumber;
+   // CodeText.Lines.Add('When:'+#32+PostView.Items[i].SubItems[4]);
     CodeText.Lines.Add('[/QUOTE]'+#13#10);
     end;
    end;
